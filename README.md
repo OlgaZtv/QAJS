@@ -1,1 +1,1 @@
-# QAJS
+# comicQA
