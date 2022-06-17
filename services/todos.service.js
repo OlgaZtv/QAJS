@@ -8,7 +8,23 @@ const Todo = {
         .set('Accept', 'application/json')
         .set('X-CHALLENGER', token);
         return response;
+    },
+    head: async(token)=>{
+        const response = await supertest(urls.challenge)
+        .head('/todos')
+        .set('Accept', 'application/json')
+        .set('X-CHALLENGER', token);
+        return response;
+    },
+    post: async(token, path, body)=>{
+        const response = await supertest(urls.challenge)
+        .post(path)
+        .set('Accept', 'application/json')
+        .set('X-CHALLENGER', token)
+        .send(body);
+        return response;
     }
 }; 
+
 
 export default Todo;
