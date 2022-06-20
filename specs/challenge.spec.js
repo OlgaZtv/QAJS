@@ -2,6 +2,7 @@ import chai from 'chai';
 import Chanllenger from '../services/challenger.service';
 import Chanllenges from '../services/challenges.service';
 import Todo from '../services/todos.service';
+import TodoBuilder from '../fixtures/builder/todo';
 
 const assert = chai.assert;
 
