@@ -9,6 +9,12 @@ const Todo = {
         .set('X-CHALLENGER', token);
         return response;
     },
+    getId: async(token, id)=>{
+        const response = await supertest(urls.challenge)
+        .get('/todos/${id}')
+        .set('X-CHALLENGER', token);
+        return response;
+    },
     head: async(token)=>{
         const response = await supertest(urls.challenge)
         .head('/todos')
