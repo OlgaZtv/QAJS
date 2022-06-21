@@ -33,7 +33,7 @@ describe ('Отправляем сетевые запросы', () => {
 
     it ('Выполнить GET запрос на `/todos/{id}` 200', async () => {
         const path = '/todos';
-        const body = new TodoBuilder().setName().setDescription().setDoneStatus('false').build();
+        const body = new TodoBuilder().setName().setDescription().setDoneStatus(false).build();
         let r = await Todo.post(token, path, body);
         r = await Todo.getId(token, r.body.id);
         assert.strictEqual(r.statusCode, 200, 'statusCode не 200');
@@ -73,14 +73,16 @@ describe ('Отправляем сетевые запросы', () => {
     });
     
     it ('Выполнить POST запрос на обновление TODO `/todos/{id}` 200', async () => {
-        const body = new TodoBuilder().setName().setDescription().setDoneStatus('false').build();
-        const path = '/todos/1284';
-        const r = await Todo.post(token, path, body);
+        const body = new TodoBuilder().setName().setDescription().setDoneStatus(false).build();
+        const path = '/todos';
+        let r = await Todo.post(token, path, body);
+        const newBody = new TodoBuilder().setName().setDescription().setDoneStatus(false).build();
+        r = await Todo.postId(token, newBody, r.body.id);
         assert.strictEqual(r.statusCode, 200, 'statusCode не 200');
     });
 
     it ('Выполнить GET запрос на `/todos` с фильтром запроса для вывода задач в статусе сделаны 200', async () => {
-        const path = '/todos?doneStatus=true'
+        const path = '/todos?doneStatus=true';
         const r = await Todo.get(token, path);
         assert.strictEqual(r.statusCode, 200, 'statusCode не 200');
     });

@@ -11,7 +11,7 @@ const Todo = {
     },
     getId: async(token, id)=>{
         const response = await supertest(urls.challenge)
-        .get('/todos/${id}')
+        .get(`/todos/${id}`)
         .set('X-CHALLENGER', token);
         return response;
     },
@@ -25,6 +25,14 @@ const Todo = {
     post: async(token, path, body)=>{
         const response = await supertest(urls.challenge)
         .post(path)
+        .set('Accept', 'application/json')
+        .set('X-CHALLENGER', token)
+        .send(body);
+        return response;
+    },
+    postId: async(token, body, id)=>{
+        const response = await supertest(urls.challenge)
+        .post(`/todos/${id}`)
         .set('Accept', 'application/json')
         .set('X-CHALLENGER', token)
         .send(body);
