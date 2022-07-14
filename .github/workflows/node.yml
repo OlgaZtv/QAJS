@@ -30,12 +30,12 @@ jobs:
       - run: npm test
 
       - name: Get Allure history
-          uses: actions/checkout@v2
-          if: always()
+        uses: actions/checkout@v2
+        if: always()
           continue-on-error: true
-          with:
-            ref: gh-pages
-            path: gh-pages
+        with:
+          ref: gh-pages
+          path: gh-pages
 
       - name: Allure report Action
         uses: simple-elf/allure-report-action@master
