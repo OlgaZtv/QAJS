@@ -1,5 +1,5 @@
 import supertest from 'supertest';
-import urls from '../config/urls';
+import {urls} from '../config/index';
 
 const Chanllenger = {
     post: async() => {
