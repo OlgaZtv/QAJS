@@ -1,3 +1,3 @@
 import urls from './urls';
 
-export {urls};
+export { urls };
