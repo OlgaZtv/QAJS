@@ -1,5 +1,5 @@
 import chai from 'chai';
-import {api} from '..services/index';
+import {api} from '../services/index';
 import {TodoBuilder} from '../fixtures/builder/index';
 
 const assert = chai.assert; 
